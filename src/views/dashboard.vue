@@ -22,17 +22,17 @@
 				<el-card shadow="hover" style="height: 252px">
 					<template #header>
 						<div class="clearfix">
-							<span>语言详情</span>
+							<span>LSW项目用例完成度详情</span>
 						</div>
 					</template>
-					Vue
-					<el-progress :percentage="79.4" color="#42b983"></el-progress>
-					TypeScript
-					<el-progress :percentage="14" color="#f1e05a"></el-progress>
-					CSS
-					<el-progress :percentage="5.6"></el-progress>
-					HTML
-					<el-progress :percentage="1" color="#f56c6c"></el-progress>
+					LSW_5735-v2
+					<el-progress :percentage="88" color="#42b983"></el-progress>
+					LSW_5755
+					<el-progress :percentage="67" color="#f56c6c"></el-progress>
+					LSW_AC3
+					<el-progress :percentage="99"></el-progress>
+					LSW_SOURCE
+					<el-progress :percentage="77" color="#f5bc6c"></el-progress>
 				</el-card>
 			</el-col>
 			<el-col :span="16">

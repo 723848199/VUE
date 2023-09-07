@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap">
     <div class="ms-login">
-      <div class="ms-title">后台管理系统</div>
+      <div class="ms-title">bug追溯 管理系统</div>
       <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
         <el-form-item prop="username">
           <el-input v-model="param.username" placeholder="username">
@@ -25,7 +25,7 @@
         <div class="login-btn">
           <el-button type="primary" @click="submitForm(login)">登录</el-button>
         </div>
-        <p class="login-tips">Tips : 用户名和密码随便填。</p>
+        <p class="login-tips">Tips : 请设置用户名和密码</p>
       </el-form>
     </div>
   </div>
@@ -68,7 +68,7 @@ const login = ref<FormInstance>();
 
 function PostData(){
   let data;
-  const api = 'http://127.0.0.1:8080/demo';
+  const api = ' http://localhost:5173/demo';
   axios({method:'post',url:api,data:{username:param.username,password:param.password},
       headers:{'content-type':'application/x-www-form-urlencoded'}}).then(res=>({
 

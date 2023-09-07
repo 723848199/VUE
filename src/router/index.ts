@@ -43,7 +43,7 @@ const routes: RouteRecordRaw[] = [
                 path: '/form',
                 name: 'baseform',
                 meta: {
-                    title: '导出新BOM',
+                    title: '导出新BOM物料表',
                     permiss: '5',
                 },
                 component: () => import(/* webpackChunkName: "form" */ '../views/form.vue'),

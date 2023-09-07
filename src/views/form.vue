@@ -7,9 +7,9 @@
                 </el-form-item>
                 <el-form-item label="选择器" prop="region">
                     <el-select v-model="form.region" placeholder="请选择">
-                        <el-option key="小明" label="小明" value="小明"></el-option>
-                        <el-option key="小红" label="小红" value="小红"></el-option>
-                        <el-option key="小白" label="小白" value="小白"></el-option>
+                        <el-option key="刘洋" label="刘洋" value="刘洋"></el-option>
+                        <el-option key="行名" label="行名" value="行名"></el-option>
+                        <el-option key="王艺鼎" label="王艺鼎" value="王艺鼎"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="日期时间">
@@ -39,7 +39,7 @@
                 </el-form-item>
                 <el-form-item label="多选框" prop="type">
                     <el-checkbox-group v-model="form.type">
-                        <el-checkbox label="小明" name="type"></el-checkbox>
+                        <el-checkbox label="刘洋" name="type"></el-checkbox>
                         <el-checkbox label="小红" name="type"></el-checkbox>
                         <el-checkbox label="小白" name="type"></el-checkbox>
                     </el-checkbox-group>
@@ -130,7 +130,7 @@ const form = reactive({
     date1: '',
     date2: '',
     delivery: true,
-    type: ['小明'],
+    type: ['刘洋'],
     resource: '小红',
     desc: '',
     options: [],

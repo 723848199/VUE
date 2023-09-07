@@ -12,15 +12,25 @@
                 >
                     <el-button class="mr10" type="success">批量导入</el-button>
                 </el-upload>
-                <el-link href="/template.xlsx" target="_blank">下载模板</el-link>
+                <el-link href="/bom_auto.xlsx" target="_blank">下载模板</el-link>
             </div>
             <el-table :data="tableData" border class="table" header-cell-class-name="table-header">
                 <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
-                <el-table-column prop="name" label="姓名"></el-table-column>
-                <el-table-column prop="sno" label="学号"></el-table-column>
-                <el-table-column prop="class" label="班级"></el-table-column>
-                <el-table-column prop="age" label="年龄"></el-table-column>
-                <el-table-column prop="sex" label="性别"></el-table-column>
+                <el-table-column prop="1" label="级别"></el-table-column>
+                <el-table-column prop="2" label="项目编号"></el-table-column>
+                <el-table-column prop="3" label="项目类别"></el-table-column>
+                <el-table-column prop="4" label="装配指示符"></el-table-column>
+                <el-table-column prop="5" label="对象标识"></el-table-column>
+                <el-table-column prop="6" label="替代项目组"></el-table-column>
+                <el-table-column prop="7" label="优先级"></el-table-column>
+                <el-table-column prop="8" label="使用可能性"></el-table-column>
+                <el-table-column prop="9" label="后继物料"></el-table-column>
+                <el-table-column prop="10" label="对象描述"></el-table-column>
+                <el-table-column prop="11" label="菲菱子件用量"></el-table-column>
+                <el-table-column prop="12" label="组件计量单位"></el-table-column>
+                <el-table-column prop="13" label="A面位号"></el-table-column>
+                <el-table-column prop="14" label="B面位号"></el-table-column>
+                <el-table-column prop="15" label="位号"></el-table-column>
             </el-table>
         </div>
     </div>
@@ -45,20 +55,42 @@ const tableData = ref<TableItem[]>([]);
 const getData = () => {
     tableData.value = [
         {
-            id: 1,
-            name: '小明',
-            sno: 'S001',
-            class: '一班',
-            age: '10',
-            sex: '男',
+            id: '1',
+            1: '1',
+            2: '80218559',
+            3: '10',
+            4: 'L',
+            5: '10',
+            6: '是',
+            7:'1',
+            8:'50',
+            9: '排针排母类',
+            10: '3',
+            11: '10',
+            12: 'L',
+            13: '10',
+            14: 'R22,R7,R1',
+            15:'80218559',
+            16:'R432',
         },
         {
-            id: 2,
-            name: '小红',
-            sno: 'S002',
-            class: '一班',
-            age: '9',
-            sex: '女',
+            id: '2',
+            1: '2',
+            2: '80218561',
+            3: '10',
+            4: 'L',
+            5: '10',
+            6: '是',
+            7:'1',
+            8:'50',
+            9: '导热垫片',
+            10: '3',
+            11: '10',
+            12: 'L',
+            13: '10',
+            14: 'R26,R68',
+            15:'80218559',
+            16:'R432',
         },
     ];
 };

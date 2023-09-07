@@ -16,7 +16,7 @@
 				<el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
 				<el-table-column prop="name" label="用户名"></el-table-column>
 				<el-table-column label="入驻天数">
-					<template #default="scope"> 已入驻{{ scope.row.money }}天</template>
+					<template #default="scope"> 已入驻{{ scope.row.day }}天</template>
 				</el-table-column>
 				<el-table-column label="头像(查看大图)" align="center">
 					<template #default="scope">

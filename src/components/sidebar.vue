@@ -63,11 +63,12 @@ const items = [
         permiss: '1',
     },
     {
-        icon: 'DocumentCopy',
-        index: '/tabs',
-        title: '事项代办',
-        permiss: '3',
+        icon: 'PieChart',
+        index: '/charts',
+        title: 'LSW项目用例统计图',
+        permiss: '11',
     },
+
     {
         icon:'Calendar',
         index: '/table',
@@ -128,14 +129,12 @@ const items = [
             },
         ],
     },
-
     {
-        icon: 'PieChart',
-        index: '/charts',
-        title: 'LSW项目用例统计图',
-        permiss: '11',
+        icon: 'DocumentCopy',
+        index: '/tabs',
+        title: '事项代办',
+        permiss: '3',
     },
-
 ];
 
 const route = useRoute();
