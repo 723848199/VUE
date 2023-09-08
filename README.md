@@ -18,19 +18,6 @@
 
 基于 Vue3 + pinia + Element Plus 的后台管理系统解决方案。[线上地址](https://lin-xin.gitee.io/example/work/)
 
-> Vue2 版本请看 [tag-V4.2.0](https://github.com/lin-xin/vue-manage-system/tree/V4.2.0)
-
-[English document](https://github.com/lin-xin/manage-system/blob/master/README_EN.md)
-
-## 赞助商
-
-### 好问
-
-[<img src="https://static.bestqa.net/logo/bestqa_haowen.png" width="220" height="100">](https://www.bestqa.net/home/index.html)
-
-专业问卷服务，一对一客服，按需定制 
-
-
 
 ## 前言
 
@@ -125,9 +112,7 @@ const options = ref({
 ![Image text](https://github.com/lin-xin/manage-system/raw/master/screenshots/wms3.png)
 
 ### 首页
-
-![Image text](https://github.com/lin-xin/manage-system/raw/master/screenshots/wms1.png)
-
+![img_1.png](img_1.png)
 ## License
 
 [MIT](https://github.com/lin-xin/vue-manage-system/blob/master/LICENSE)
