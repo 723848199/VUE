@@ -30,11 +30,7 @@
 
 专业问卷服务，一对一客服，按需定制 
 
-## 支持作者
 
-请作者喝杯咖啡吧！(微信号：linxin_20)
-
-![微信扫一扫](https://lin-xin.gitee.io/images/weixin.jpg)
 
 ## 前言
 

@@ -3,8 +3,11 @@
 	"version": "5.3.0",
 	"private": true,
 	"scripts": {
-		"dev": "vite",
-		"build": "vue-tsc --noEmit && vite build",
+		"dev": "vite  --host=172.16.14.86",
+		"build": "run-p type-check build-only",
+		"preview": "vite preview",
+		"test:unit": "vitest",
+		"build-only": "vite build",
 		"serve": "vite preview"
 	},
 	"dependencies": {

@@ -6,11 +6,11 @@
             </div>
             <el-table :data="tableData" border class="table" header-cell-class-name="table-header">
                 <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
-                <el-table-column prop="name" label="姓名"></el-table-column>
-                <el-table-column prop="sno" label="学号"></el-table-column>
-                <el-table-column prop="class" label="班级"></el-table-column>
-                <el-table-column prop="age" label="年龄"></el-table-column>
-                <el-table-column prop="sex" label="性别"></el-table-column>
+                <el-table-column prop="name" label="物料编码"></el-table-column>
+                <el-table-column prop="sno" label="工号"></el-table-column>
+                <el-table-column prop="class" label="级别"></el-table-column>
+                <el-table-column prop="age" label="位号A"></el-table-column>
+                <el-table-column prop="sex" label="位号B"></el-table-column>
             </el-table>
         </div>
     </div>
@@ -35,35 +35,31 @@ const getData = () => {
     tableData.value = [
         {
             id: 1,
-            name: '小明',
+            name: '4155335',
             sno: 'S001',
-            class: '一班',
+            class: '一',
             age: '10',
-            sex: '男',
+            sex: 'R111',
         },
-        {
-            id: 2,
-            name: '小红',
-            sno: 'S002',
-            class: '一班',
-            age: '9',
-            sex: '女',
+        {id: 2,
+            name: '15431',
+            sno: 'S001',
+            class: '二',
+            age: '10',
+            sex: 'R45',
         },
     ];
 };
 getData();
 
-const list = [['序号', '姓名', '学号', '班级', '年龄', '性别']];
+const list = [['序号', '物料编码', '位号', '级别', 'A', '位号B']];
 const exportXlsx = () => {
-    tableData.value.map((item: any, i: number) => {
-        const arr: any[] = [i + 1];
-        arr.push(...[item.name, item.sno, item.class, item.age, item.sex]);
-        list.push(arr);
-    });
-    let WorkSheet = XLSX.utils.aoa_to_sheet(list);
-    let new_workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(new_workbook, WorkSheet, '第一页');
-    XLSX.writeFile(new_workbook, `表格.xlsx`);
+    const api ='http://172.16.14.86:8180/new_bom';
+    axios({
+    method:'post',
+    url:api,
+      headers:{'content-type':'application/x-www-form-urlencoded'}}).then(res=>({}));
+
 };
 </script>
 

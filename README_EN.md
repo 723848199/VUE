@@ -22,7 +22,7 @@ Please check the version of vue2 in [tag V4.2.0](https://github.com/lin-xin/vue-
 
 ## Donation
 
-![WeChat](https://lin-xin.gitee.io/images/weixin.jpg)
+
 
 ## Preface
 

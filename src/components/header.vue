@@ -5,7 +5,7 @@
 			<el-icon v-if="sidebar.collapse"><Expand /></el-icon>
 			<el-icon v-else><Fold /></el-icon>
 		</div>
-		<div class="logo">bug追溯 管理系統</div>
+		<div class="logo">项目追溯 管理系統</div>
 		<div class="header-right">
 			<div class="header-user-con">
 				<!-- 消息中心 -->
@@ -15,7 +15,7 @@
 						:content="message ? `有${message}条未读消息` : `消息中心`"
 						placement="bottom"
 					>
-		F				<i class="el-icon-lx-notice"></i>
+						<i class="el-icon-lx-notice"></i>
 					</el-tooltip>
 					<span class="btn-bell-badge" v-if="message"></span>
 				</div>

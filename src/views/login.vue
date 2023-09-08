@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap">
     <div class="ms-login">
-      <div class="ms-title">bug追溯 管理系统</div>
+      <div class="ms-title">项目管理系统</div>
       <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
         <el-form-item prop="username">
           <el-input v-model="param.username" placeholder="username">
@@ -30,7 +30,6 @@
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 import {ref, reactive} from 'vue';
 import {useTagsStore} from '../store/tags';
@@ -65,14 +64,12 @@ const rules: FormRules = {
 const permiss = usePermissStore();
 const login = ref<FormInstance>();
 
-
 function PostData(){
   let data;
-  const api = ' http://localhost:5173/demo';
-  axios({method:'post',url:api,data:{username:param.username,password:param.password},
-      headers:{'content-type':'application/x-www-form-urlencoded'}}).then(res=>({
-
-  }));
+  const api = 'http://localhost:8180/demo';
+  axios({method:'post',
+  url:api,data:{username:param.username,password:param.password},
+      headers:{'content-type':'application/x-www-form-urlencoded'}}).then(res=>({}));
 
   return data
 }
@@ -80,25 +77,13 @@ const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.validate((valid: boolean) => {
     if (valid) {
-
       const data = PostData();
-
-      // axios
-      //     .post(api, data = {username: param.username, password: param.password},headers={})
-      //     .then((res) => {
-      //       data = JSON.stringify(res.data.rows);
-      //       console.log(res);
-      //     })
-      //     .catch((er) => {
-      //       console.log(er)
-      //     })
-
       ElMessage.success('登录成功');
       localStorage.setItem('ms_username', param.username);
       const keys = permiss.defaultList[param.username == 'admin' ? 'admin' : 'user'];
       permiss.handleSet(keys);
       localStorage.setItem('ms_keys', JSON.stringify(keys));
-      // router.push('/');
+      router.push('/');
     } else {
       ElMessage.error('登录成功');
       return false;
@@ -159,3 +144,7 @@ tags.clearTags();
   color: #fff;
 }
 </style>
+//分页查询axios请求方式
+this.request.get("user/page", {params: {//请求参数（条件查询）pageNum: this.pageNum,pageSize: this.pageSize,username: this.username,email: this.email,address: this.address}
+}).then(res => {this.tableData = res.recordsthis.total = res.total
+})

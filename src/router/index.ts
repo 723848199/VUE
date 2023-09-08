@@ -123,7 +123,7 @@ const routes: RouteRecordRaw[] = [
                 path: '/export',
                 name: 'export',
                 meta: {
-                    title: '导出Excel',
+                    title: '导出新BOM物料表',
                     permiss: '2',
                 },
                 component: () => import(/* webpackChunkName: "export" */ '../views/export.vue'),
