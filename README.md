@@ -78,20 +78,20 @@ import Schart from "vue-schart"; // 导入Schart组件
 const options = ref({
     type: "bar",
     title: {
-        text: "最近一周各品类销售图",
+        text: "最近一周项目测试用例实现情况",
     },
     labels: ["周一", "周二", "周三", "周四", "周五"],
     datasets: [
         {
-            label: "家电",
+            label: "AC3",
             data: [234, 278, 270, 190, 230],
         },
         {
-            label: "百货",
+            label: "5735-v2",
             data: [164, 178, 190, 135, 160],
         },
         {
-            label: "食品",
+            label: "5755",
             data: [144, 198, 150, 235, 120],
         },
     ],
@@ -112,6 +112,7 @@ const options = ref({
 ![Image text](https://github.com/lin-xin/manage-system/raw/master/screenshots/wms3.png)
 
 ### 首页
+
 ![img_1.png](img_1.png)
 ## License
 
