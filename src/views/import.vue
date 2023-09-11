@@ -16,9 +16,9 @@
             </div>
             <el-table :data="tableData" border class="table" header-cell-class-name="table-header">
                 <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
-                <el-table-column prop="1" label="级别"></el-table-column>
-                <el-table-column prop="2" label="项目编号"></el-table-column>
-                <el-table-column prop="3" label="项目类别"></el-table-column>
+                <el-table-column prop="level" label="级别"></el-table-column>
+                <el-table-column prop="item_encoding" label="项目编号"></el-table-column>
+                <el-table-column prop="item_type" label="项目类别"></el-table-column>
                 <el-table-column prop="4" label="装配指示符"></el-table-column>
                 <el-table-column prop="5" label="对象标识"></el-table-column>
                 <el-table-column prop="6" label="替代项目组"></el-table-column>
@@ -43,11 +43,21 @@ import * as XLSX from 'xlsx';
 
 interface TableItem {
     id: number;
-    name: string;
-    sno: string;
-    class: string;
-    age: string;
-    sex: string;
+    level: string
+    item_encoding: string
+    item_type: string;
+    4: string
+    5: string
+    6: string
+    7: string
+    8: string
+    9: string
+    10: string
+    11: string
+    12: string
+    13: string
+    14: string
+    15: string
 }
 
 const tableData = ref<TableItem[]>([]);
@@ -55,10 +65,10 @@ const tableData = ref<TableItem[]>([]);
 const getData = () => {
     tableData.value = [
         {
-            id: '1',
-            1: '1',
-            2: '80218559',
-            3: '10',
+            id: 1,
+            level: '1',
+            item_encoding: '80218559',
+            item_type: '10',
             4: 'L',
             5: '10',
             6: '是',
@@ -71,13 +81,12 @@ const getData = () => {
             13: '10',
             14: 'R22,R7,R1',
             15:'80218559',
-            16:'R432',
         },
         {
-            id: '2',
-            1: '2',
-            2: '80218561',
-            3: '10',
+            id: 2,
+            level: '2',
+            item_encoding: '80218561',
+            item_type: '10',
             4: 'L',
             5: '10',
             6: '是',
@@ -90,7 +99,6 @@ const getData = () => {
             13: '10',
             14: 'R26,R68',
             15:'80218559',
-            16:'R432',
         },
     ];
 };
