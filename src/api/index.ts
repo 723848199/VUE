@@ -6,3 +6,11 @@ export const fetchData = () => {
         method: 'get'
     });
 };
+
+export function addMeterialMessage(data){
+    return request({
+        url: '',
+        method: 'post',
+        data: data
+    })
+}

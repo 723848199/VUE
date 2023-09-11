@@ -1,5 +1,9 @@
 <template>
     <div class="sidebar">
+      <!-- el-menu:         element 组件库的下拉菜单
+           unique-opened:    是否只保持一个子菜单的展开
+           router:          启用该模式会在激活导航时以 index 作为 path 进行路由跳转
+      -->
         <el-menu
             class="sidebar-el-menu"
             :default-active="onRoutes"
@@ -10,8 +14,11 @@
             unique-opened
             router
         >
+          <!--循环items菜单数据-->
             <template v-for="item in items">
+              <!--判断这一项数据是否有子项菜单 -->
                 <template v-if="item.subs">
+
                     <el-sub-menu :index="item.index" :key="item.index" v-permiss="item.permiss">
                         <template #title>
                             <el-icon>
@@ -37,6 +44,7 @@
                         </template>
                     </el-sub-menu>
                 </template>
+              <!-- 一级菜单 -->
                 <template v-else>
                     <el-menu-item :index="item.index" :key="item.index" v-permiss="item.permiss">
                         <el-icon>
@@ -66,31 +74,29 @@ const items = [
         icon: 'PieChart',
         index: '/charts',
         title: 'LSW项目用例统计图',
-        permiss: '11',
+        permiss: '2',
     },
 
     {
         icon:'Calendar',
         index: '/table',
         title: '查看用户注册信息',
-        permiss: '2',
+        permiss: '3',
     },
     {
         icon: 'Calendar',
         index: '1',
         title: '自动化更新BOM物料表',
-        permiss: '2',
+        permiss: '4',
         subs: [
 
             {
                 index: '/import',
                 title: '导入BOM操作Excel',
-                permiss: '2',
             },
             {
                 index: '/export',
                 title: '导出新BOM物料表',
-                permiss: '2',
             },
         ],
     },
@@ -98,32 +104,27 @@ const items = [
         icon: 'Edit',
         index: '3',
         title: '在线填写BOM表单',
-        permiss: '4',
+        permiss: '5',
         subs: [
             {
                 index: '/form',
                 title: 'BOM表单填写',
-                permiss: '5',
             },
             {
                 index: '/upload',
                 title: 'ＢＯＭ操作表ｅｘｃｌ上传',
-                permiss: '6',
             },
             {
                 index: '4',
                 title: '文本编辑处',
-                permiss: '7',
                 subs: [
                     {
                         index: '/editor',
                         title: '富文本编辑',
-                        permiss: '8',
                     },
                     {
                         index: '/markdown',
                         title: 'markdown编辑',
-                        permiss: '9',
                     },
                 ],
             },
@@ -133,7 +134,13 @@ const items = [
         icon: 'DocumentCopy',
         index: '/tabs',
         title: '事项代办',
-        permiss: '3',
+        permiss: '7',
+    },
+    {
+        icon: 'DocumentCopy',
+        index: 'MaterialManagement',
+        title: '物料管理',
+        permiss: '8',
     },
 ];
 

@@ -2,53 +2,68 @@
 	<div>
 		<div class="container">
 			<div class="handle-box">
-				<el-select v-model="query.address" placeholder="地址" class="handle-select mr10">
-					<el-option key="1" label="广东省" value="东莞市"></el-option>
-					<el-option key="2" label="广东省" value="深圳市"></el-option>
-					<el-option key="3" label="江苏省" value="南京市"></el-option>
-					<el-option key="4" label="湖北省" value="武汉市"></el-option>
+				<el-select v-model="query.address" placeholder="搜索类型" class="handle-select mr10" >
+					<el-option key="1" label="产品编码" value="material_encoding"></el-option>
+					<el-option key="2" label="未定义类型1" value="未定义值1"></el-option>
+					<el-option key="3" label="未定义类型2" value="未定义值2"></el-option>
+					<el-option key="4" label="未定义类型3" value="未定义值3"></el-option>
 				</el-select>
-				<el-input v-model="query.name" placeholder="用户名" class="handle-input mr10"></el-input>
+				<el-input v-model="query.name" placeholder="产品编码" class="handle-input mr10"></el-input>
+        <!--type="primary" element库按钮类型，蓝色 圆角-->
 				<el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-				<el-button type="primary" :icon="Plus">新增</el-button>
+				<el-button type="primary" :icon="Plus" @click="">新增</el-button>
 			</div>
 			<el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
 				<el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
-				<el-table-column prop="name" label="用户名"></el-table-column>
-				<el-table-column label="入驻天数">
-					<template #default="scope"> 已入驻{{ scope.row.day }}天</template>
+				<el-table-column prop="sn" label="产品编码">
+          <template >
+            ！！！代码未处理 产品描述 读取
+          </template>
+        </el-table-column>
+				<el-table-column prop="description" label="产品描述" align="center">
+					<template >
+            ！！！代码未处理 产品描述 读取
+          </template>
 				</el-table-column>
-				<el-table-column label="头像(查看大图)" align="center">
-					<template #default="scope">
-						<el-image
-							class="table-td-thumb"
-							:src="scope.row.thumb"
-							:z-index="10"
-							:preview-src-list="[scope.row.thumb]"
-							preview-teleported
-						>
-						</el-image>
+				<el-table-column prop="produc_type" label="产品类型" align="center">
+					<template >
+            ！！！代码未处理  读取
 					</template>
 				</el-table-column>
-				<el-table-column prop="address" label="物流收件地址"></el-table-column>
-				<el-table-column label="用户账号状态" align="center">
-					<template #default="scope">
-						<el-tag
-							:type="scope.row.state === '在线' ? 'success' : scope.row.state === '下线' ? 'danger' : ''"
-						>
-							{{ scope.row.state }}
-						</el-tag>
+        <el-table-column prop="produc_brand" label="产品品牌" align="center">
+					<template >
+            ！！！代码未处理  读取
 					</template>
 				</el-table-column>
+				<el-table-column prop="produc_model" label="入网产品型号" align="center">
+          <template >
+            ！！！代码未处理  读取
+					</template>
+        </el-table-column>
+        <el-table-column prop="produc_line" label="产品线" align="center">
+          <template >
+            ！！！代码未处理  读取
+					</template>
+        </el-table-column>
+        <el-table-column prop="produc_encoding" label="产品代码" align="center">
+          <template >
+            ！！！代码未处理  读取
+					</template>
+        </el-table-column>
 
-				<el-table-column prop="date" label="注册时间"></el-table-column>
+				<el-table-column prop="creat_date" label="创建时间">
+          <template >
+            ！！！代码未处理  读取
+					</template>
+        </el-table-column>
+
 				<el-table-column label="操作" width="220" align="center">
 					<template #default="scope">
-						<el-button text :icon="Edit" @click="handleEdit(scope.$index, scope.row)" v-permiss="15">
+						<el-button text :icon="Edit" class="blue" @click="handleEdit(scope.$index, scope.row)">
 							编辑
 						</el-button>
-						<el-button text :icon="Delete" class="red" @click="handleDelete(scope.$index)" v-permiss="16">
-							删除
+						<el-button text :icon="List" class="blue" @click="handleDelete(scope.$index)">
+							详情
 						</el-button>
 					</template>
 				</el-table-column>
@@ -69,10 +84,10 @@
 		<el-dialog title="编辑" v-model="editVisible" width="30%">
 			<el-form label-width="70px">
 				<el-form-item label="用户名">
-					<el-input v-model="form.name"></el-input>
+					<el-input v-model="editform.name"></el-input>
 				</el-form-item>
 				<el-form-item label="地址">
-					<el-input v-model="form.address"></el-input>
+					<el-input v-model="editform.address"></el-input>
 				</el-form-item>
 			</el-form>
 			<template #footer>
@@ -88,8 +103,9 @@
 <script setup lang="ts" name="basetable">
 import { ref, reactive } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { Delete, Edit, Search, Plus } from '@element-plus/icons-vue';
-import { fetchData } from '../api';
+import {Edit, Search, Plus, List} from '@element-plus/icons-vue';
+import { fetchData , addMeterialMessage} from '../api';
+// import List from "wangeditor/dist/menus/list";
 
 interface TableItem {
 	id: number;
@@ -128,6 +144,12 @@ const handlePageChange = (val: number) => {
 	getData();
 };
 
+// 新增操作
+const handleUpdate = () => {
+  addMeterialMessage(this.form).then()
+};
+
+
 // 删除操作
 const handleDelete = (index: number) => {
 	// 二次确认删除
@@ -141,24 +163,32 @@ const handleDelete = (index: number) => {
 		.catch(() => {});
 };
 
+//新增数据时弹窗和保存
+const updateVisible = ref();
+let updateform = reactive({
+
+});
+
+
 // 表格编辑时弹窗和保存
 const editVisible = ref(false);
-let form = reactive({
+let editform = reactive({
 	name: '',
 	address: ''
 });
 let idx: number = -1;
 const handleEdit = (index: number, row: any) => {
 	idx = index;
-	form.name = row.name;
-	form.address = row.address;
+	editform.name = row.name;
+	editform.address = row.address;
+
 	editVisible.value = true;
 };
 const saveEdit = () => {
 	editVisible.value = false;
-	ElMessage.success(`修改第 ${idx + 1} 行成功`);
-	tableData.value[idx].name = form.name;
-	tableData.value[idx].address = form.address;
+	ElMessage.success(`修改已提交`);
+	tableData.value[idx].name = editform.name;
+	tableData.value[idx].address = editform.address;
 };
 </script>
 
@@ -178,8 +208,8 @@ const saveEdit = () => {
 	width: 100%;
 	font-size: 14px;
 }
-.red {
-	color: #F56C6C;
+.blue {
+	color: #409EFF;
 }
 .mr10 {
 	margin-right: 10px;

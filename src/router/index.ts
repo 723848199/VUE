@@ -25,8 +25,7 @@ const routes: RouteRecordRaw[] = [
                 path: '/table',
                 name: 'basetable',
                 meta: {
-                    title: '下载常用模板',
-                    permiss: '2',
+                    title: '用户注册信息',
                 },
                 component: () => import(/* webpackChunkName: "table" */ '../views/table.vue'),
             },
@@ -35,7 +34,6 @@ const routes: RouteRecordRaw[] = [
                 name: 'basecharts',
                 meta: {
                     title: '导入BOM操作Excel',
-                    permiss: '11',
                 },
                 component: () => import(/* webpackChunkName: "charts" */ '../views/charts.vue'),
             },
@@ -44,7 +42,6 @@ const routes: RouteRecordRaw[] = [
                 name: 'baseform',
                 meta: {
                     title: '导出新BOM物料表',
-                    permiss: '5',
                 },
                 component: () => import(/* webpackChunkName: "form" */ '../views/form.vue'),
             },
@@ -53,45 +50,24 @@ const routes: RouteRecordRaw[] = [
                 name: 'tabs',
                 meta: {
                     title: '事项代办',
-                    permiss: '3',
                 },
                 component: () => import(/* webpackChunkName: "tabs" */ '../views/tabs.vue'),
             },
             {
-                path: '/donate',
-                name: 'donate',
+                path: '/MaterialManagement',
+                name: 'MaterialManagement',
                 meta: {
-                    title: '鼓励作者',
-                    permiss: '14',
+                    title: '物料管理',
                 },
-                component: () => import(/* webpackChunkName: "donate" */ '../views/donate.vue'),
+                component: () => import(/* webpackChunkName: "tabs" */ '../views/MaterialManagement.vue'),
             },
             {
                 path: '/permission',
                 name: 'permission',
                 meta: {
                     title: '权限管理',
-                    permiss: '13',
                 },
                 component: () => import(/* webpackChunkName: "permission" */ '../views/permission.vue'),
-            },
-            {
-                path: '/upload',
-                name: 'upload',
-                meta: {
-                    title: '上传插件',
-                    permiss: '6',
-                },
-                component: () => import(/* webpackChunkName: "upload" */ '../views/upload.vue'),
-            },
-            {
-                path: '/icon',
-                name: 'icon',
-                meta: {
-                    title: '自定义图标',
-                    permiss: '10',
-                },
-                component: () => import(/* webpackChunkName: "icon" */ '../views/icon.vue'),
             },
             {
                 path: '/user',

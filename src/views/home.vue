@@ -1,11 +1,13 @@
 <template>
-	<v-header />
-	<v-sidebar />
+	<Header />
+	<Sidebar />
 	<div class="content-box" :class="{ 'content-collapse': sidebar.collapse }">
-		<v-tags></v-tags>
+		<Tags></Tags>
 		<div class="content">
 			<router-view v-slot="{ Component }">
+        <!--内置动画 -->
 				<transition name="move" mode="out-in">
+          <!--保持组件存活 -->
 					<keep-alive :include="tags.nameList">
 						<component :is="Component"></component>
 					</keep-alive>
@@ -17,9 +19,9 @@
 <script setup lang="ts">
 import { useSidebarStore } from '../store/sidebar';
 import { useTagsStore } from '../store/tags';
-import vHeader from '../components/header.vue';
-import vSidebar from '../components/sidebar.vue';
-import vTags from '../components/tags.vue';
+import Header from '../components/header.vue';
+import Sidebar from '../components/sidebar.vue';
+import Tags from '../components/tags.vue';
 
 const sidebar = useSidebarStore();
 const tags = useTagsStore();
