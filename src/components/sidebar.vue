@@ -26,11 +26,10 @@
                             </el-icon>
                             <span>{{ item.title }}</span>
                         </template>
-                        <template v-for="subItem in item.subs">
+                        <template v-for="subItem in item.subs" :key="subItem.index">
                             <el-sub-menu
                                 v-if="subItem.subs"
                                 :index="subItem.index"
-                                :key="subItem.index"
                                 v-permiss="item.permiss"
                             >
                                 <template #title>{{ subItem.title }}</template>
@@ -65,7 +64,7 @@ import { useRoute } from 'vue-router';
 
 const items = [
     {
-        icon: 'Odometer',
+        icon: 'House',
         index: '/dashboard',
         title: '系统首页',
         permiss: '1',
