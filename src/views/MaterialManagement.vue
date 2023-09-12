@@ -11,7 +11,7 @@
 				<el-input v-model="query.name" placeholder="产品编码" class="handle-input mr10"></el-input>
         <!--type="primary" element库按钮类型，蓝色 圆角-->
 				<el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
-				<el-button type="primary" :icon="Plus" @click="">新增</el-button>
+				<el-button type="primary" :icon="Plus" @click="handleAdd">新增</el-button>
 			</div>
 			<el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
 				<el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
@@ -36,11 +36,6 @@
 					</template>
 				</el-table-column>
 				<el-table-column prop="produc_model" label="入网产品型号" align="center">
-          <template >
-            ！！！代码未处理  读取
-					</template>
-        </el-table-column>
-        <el-table-column prop="produc_line" label="产品线" align="center">
           <template >
             ！！！代码未处理  读取
 					</template>
@@ -80,6 +75,40 @@
 			</div>
 		</div>
 
+    <!-- 新增物料弹出框 -->
+		<el-dialog title="新增产品信息" v-model="updateVisible" width="30%">
+			<el-form label-width="100px">
+				<el-form-item label="产品编码">
+					<el-input v-model="updateform.sn" placeholder="80218559"></el-input>
+				</el-form-item>
+				<el-form-item label="产品描述">
+					<el-input v-model="updateform.description" placeholder="S5735-XXXX"></el-input>
+				</el-form-item>
+        <el-form-item label="产品类型">
+					<el-input v-model="updateform.produc_type" placeholder="管理交换机"></el-input>
+				</el-form-item>
+        <el-form-item label="产品品牌">
+					<el-input v-model="updateform.produc_brand" placeholder="华为"></el-input>
+				</el-form-item>
+        <el-form-item label="入网成品型号">
+					<el-input v-model="updateform.produc_model" placeholder="5735系列"></el-input>
+				</el-form-item>
+        <el-form-item label="产品代码">
+					<el-input v-model="updateform.produc_encoding" placeholder="S5735-XXXX"></el-input>
+				</el-form-item>
+        <el-form-item label="修改记录">
+          <!-- type="textarea" 可伸缩输入框 -->
+					<el-input v-model="updateform.remark" type="textarea"></el-input>
+				</el-form-item>
+			</el-form>
+			<template #footer>
+				<span class="dialog-footer">
+					<el-button @click="updateVisible = false">取 消</el-button>
+					<el-button type="primary" @click="saveadd">确 定</el-button>
+				</span>
+			</template>
+		</el-dialog>
+
 		<!-- 编辑弹出框 -->
 		<el-dialog title="编辑" v-model="editVisible" width="30%">
 			<el-form label-width="70px">
@@ -106,6 +135,30 @@ import { ElMessage, ElMessageBox } from 'element-plus';
 import {Edit, Search, Plus, List} from '@element-plus/icons-vue';
 import { fetchData , addMeterialMessage} from '../api';
 // import List from "wangeditor/dist/menus/list";
+
+//新增数据时弹窗
+const updateVisible = ref(false);
+let updateform = reactive({
+	sn: '',
+	description: '',
+  produc_type: '',
+	produc_brand: '',
+	produc_model: '',
+	produc_encoding: '',
+  creat_date: '',
+	remark: '',
+});
+
+const handleAdd =() =>{
+  updateVisible.value=true;
+}
+// 保存新增数据
+const saveadd = () => {
+	updateVisible.value = false;
+	tableData.value[idx].name = editform.name;
+	tableData.value[idx].address = editform.address;
+  addMeterialMessage(updateform)
+};
 
 interface TableItem {
 	id: number;
@@ -144,11 +197,6 @@ const handlePageChange = (val: number) => {
 	getData();
 };
 
-// 新增操作
-const handleUpdate = () => {
-  addMeterialMessage(this.form).then()
-};
-
 
 // 删除操作
 const handleDelete = (index: number) => {
@@ -162,13 +210,6 @@ const handleDelete = (index: number) => {
 		})
 		.catch(() => {});
 };
-
-//新增数据时弹窗和保存
-const updateVisible = ref();
-let updateform = reactive({
-
-});
-
 
 // 表格编辑时弹窗和保存
 const editVisible = ref(false);
@@ -190,6 +231,7 @@ const saveEdit = () => {
 	tableData.value[idx].name = editform.name;
 	tableData.value[idx].address = editform.address;
 };
+
 </script>
 
 <style scoped>
