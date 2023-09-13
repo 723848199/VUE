@@ -16,6 +16,19 @@ export default defineConfig({
 			resolvers: [ElementPlusResolver()]
 		})
 	],
+	server: {
+		// host: '0.0.0.0',
+		//更改启动端口
+		// port: 9999,
+		// 代理规则示例：将 /api 请求代理到不同的后端 IP 地址
+		proxy: {
+			'/api': {
+				target: 'http://172.16.14.43',//代理的地址
+				changeOrigin: true,
+				rewrite: path => path.replace(/^\/api/, '')
+			}
+		}
+  },
 	optimizeDeps: {
 		include: ['schart.js']
 	}

@@ -17,48 +17,21 @@
 				<el-table-column prop="id" label="ID" width="55" align="center">
 
 				</el-table-column>
-				<el-table-column prop="sn" label="产品编码">
-					<template >
-						！！！代码未处理 产品描述 读取
-					</template>
+				<el-table-column prop="worker_id" label="工号">
 				</el-table-column>
-				<el-table-column prop="description" label="产品描述" align="center">
-					<template >
-           				 ！！！代码未处理 产品描述 读取
-          			</template>
+				<el-table-column prop="creat_time" label="创建时间" align="center">
 				</el-table-column>
-				<el-table-column prop="produc_type" label="产品类型" align="center">
-					<template >
-           				！！！代码未处理  读取
-				  </template>
+				<el-table-column prop="update_time" label="更新时间" align="center">
 				</el-table-column>
-				<el-table-column prop="produc_brand" label="产品品牌" align="center">
-					<template >
-						！！！代码未处理  读取
-					</template>
+				<el-table-column prop="bug_id" label="单号" align="center">
 				</el-table-column>
-				<el-table-column prop="produc_model" label="入网产品型号" align="center">
-					<template >
-						！！！代码未处理  读取
-					</template>
+				<el-table-column prop="bug_title" label="工单标题" align="center">
 				</el-table-column>
-				<el-table-column prop="produc_encoding" label="产品代码" align="center">
-					<template >
-						！！！代码未处理  读取
-					</template>
+				<el-table-column prop="bug_info" label="工单信息" align="center">
 				</el-table-column>
-
-				<el-table-column prop="creat_date" label="创建时间">
-					<template >
-						！！！代码未处理  读取
-					</template>
+				<el-table-column prop="bug_details" label="工单详细描述">
 				</el-table-column>
-
-				<el-table-column prop="remark" label="备注信息">
-					<template >
-						！！！代码未处理  读取
-					</template>
-				</el-table-column>
+			
 				<el-table-column label="操作" width="220" align="center">
 					<template #default="scope">
 						<el-button text :icon="Edit" class="blue" @click="handleEdit(scope.$index, scope.row)">
@@ -96,29 +69,22 @@
 		</div>
 
     <!-- 新增物料弹出框 -->
-		<el-dialog title="新增产品信息" v-model="updateVisible" width="30%">
+		<el-dialog title="新增工单" v-model="updateVisible" width="30%">
 			<el-form :model="updateform" ref="ruleFormRef" label-width="100px" :rules="rules">
-				<el-form-item label="产品编码" prop="sn">
-					<el-input v-model="updateform.sn" placeholder="80218559"></el-input>
+				<el-form-item label="工号" prop="worker_id">
+					<el-input v-model="updateform.worker_id"></el-input>
 				</el-form-item>
-				<el-form-item label="产品描述" prop="description">
-					<el-input v-model="updateform.description" placeholder="S5735-XXXX"></el-input>
+				<el-form-item label="更新时间" prop="update_time">
+					<el-input v-model="updateform.update_time"></el-input>
 				</el-form-item>
-				<el-form-item label="产品类型" prop="produc_type">
-					<el-input v-model="updateform.produc_type" placeholder="管理交换机"></el-input>
+				<el-form-item label="工单标题" prop="bug_title">
+					<el-input v-model="updateform.bug_title"></el-input>
 				</el-form-item>
-				<el-form-item label="产品品牌" prop="produc_brand">
-					<el-input v-model="updateform.produc_brand" placeholder="华为"></el-input>
+				<el-form-item label="工单信息" prop="bug_info">
+					<el-input v-model="updateform.bug_info"></el-input>
 				</el-form-item>
-				<el-form-item label="入网成品型号" prop="produc_model">
-					<el-input v-model="updateform.produc_model" placeholder="5735系列"></el-input>
-				</el-form-item>
-				<el-form-item label="产品代码" prop="produc_encoding">
-					<el-input v-model="updateform.produc_encoding" placeholder="S5735-XXXX"></el-input>
-				</el-form-item>
-				<el-form-item label="备注信息" prop="remark">
-          <!-- type="textarea" 可伸缩输入框 -->
-					<el-input v-model="updateform.remark" type="textarea"></el-input>
+				<el-form-item label="工单详细描述" prop="bug_details">
+					<el-input v-model="updateform.bug_details" type="textarea"></el-input>
 				</el-form-item>
 			</el-form>
 			<template #footer>
@@ -132,27 +98,24 @@
 		<!-- 编辑弹出框 -->
 		<el-dialog title="编辑" v-model="editVisible" width="30%">
 			<el-form :model="updateform" ref="ruleFormRef" label-width="100px" :rules="rules">
-				<el-form-item label="产品编码" prop="sn">
-					<el-input v-model="updateform.sn" placeholder="80218559"></el-input>
+				<el-form-item label="工号" prop="worker_id">
+					<el-input v-model="updateform.worker_id"></el-input>
 				</el-form-item>
-				<el-form-item label="产品描述" prop="description">
-					<el-input v-model="updateform.description" placeholder="S5735-XXXX"></el-input>
+				<el-form-item label="创建时间" prop="creat_time">
+					<el-input v-model="updateform.creat_time"></el-input>
 				</el-form-item>
-				<el-form-item label="产品类型" prop="produc_type">
-					<el-input v-model="updateform.produc_type" placeholder="管理交换机"></el-input>
+				<el-form-item label="更新时间" prop="update_time">
+					<el-input v-model="updateform.update_time"></el-input>
 				</el-form-item>
-				<el-form-item label="产品品牌" prop="produc_brand">
-					<el-input v-model="updateform.produc_brand" placeholder="华为"></el-input>
+				<el-form-item label="工单标题" prop="bug_title">
+					<el-input v-model="updateform.bug_title"></el-input>
 				</el-form-item>
-				<el-form-item label="入网成品型号" prop="produc_model">
-					<el-input v-model="updateform.produc_model" placeholder="5735系列"></el-input>
+				<el-form-item label="工单信息" prop="bug_info">
+					<el-input v-model="updateform.bug_info"></el-input>
 				</el-form-item>
-				<el-form-item label="产品代码" prop="produc_encoding">
-					<el-input v-model="updateform.produc_encoding" placeholder="S5735-XXXX"></el-input>
-				</el-form-item>
-				<el-form-item label="备注信息" prop="remark">
+				<el-form-item label="工单详细描述" prop="bug_details">
           <!-- type="textarea" 可伸缩输入框 -->
-					<el-input v-model="updateform.remark" type="textarea"></el-input>
+					<el-input v-model="updateform.bug_details" type="textarea"></el-input>
 				</el-form-item>
 			</el-form>
 			<template #footer>
@@ -169,32 +132,29 @@
 import { ref, reactive } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import {Edit, Search, Plus, List} from '@element-plus/icons-vue';
-import {fetchData, addMeterialMessage, editMeterialMessage} from '../api';
+import {fetchData, addBugSchedule, editBugSchedule} from '../api';
 import type { FormInstance, FormRules } from 'element-plus'
 // import List from "wangeditor/dist/menus/list";
 
 interface TableItem {
-    sn: string;
-    description: string;
-    produc_type: string;
-    produc_brand: string;
-    produc_model: string;
-    produc_encoding: string;
-    creat_date: string;
-    remark: string;
+    worker_id: any;
+    creat_time: any;
+    update_time: any;
+    bug_id: any;
+    bug_title: any;
+    bug_info: any;
+    bug_details: any;
 }
 
 //新增数据时弹窗
 const updateVisible = ref(false);
 let updateform = reactive({
-	sn: '',
-	description: '',
-  produc_type: '',
-	produc_brand: '',
-	produc_model: '',
-	produc_encoding: '',
-  creat_date: '',
-	remark: '',
+	  worker_id: '',
+    creat_time: '',
+    update_time: '',
+    bug_title: '',
+    bug_info: '',
+    bug_details: '',
 });
 const query = reactive({
 	address: '',
@@ -211,25 +171,22 @@ const pageTotal = ref(0);
 const ruleFormRef = ref<FormInstance>()
 const rules = reactive<FormRules>({
   /* required 必填，massage 提示信息, trigger:blur 失去焦点时校验| charnel:数据发生变化时校验 */
-  sn: [
+  worker_id: [
     { required: true, message: 'Please input sn', trigger: 'blur' },
   ],
-  description: [
+  creat_time: [
     { required: true, message: 'Please input description', trigger: 'blur' },
   ],
-  produc_type: [
-    { required: true, message: 'Please input produc_type', trigger: 'blur' },
+  update_time: [
+    { required: false, message: 'Please input produc_type', trigger: 'blur' },
   ],
-  produc_brand: [
-    { required: true, message: 'Please input produc_brand', trigger: 'blur' },
-  ],
-  produc_model: [
+  bug_title: [
     { required: true, message: 'Please input produc_model', trigger: 'blur' },
   ],
-  produc_encoding: [
+  bug_info: [
     { required: true, message: 'Please input produc_encoding', trigger: 'blur' },
   ],
-  remark: [
+  bug_details: [
     { required: true, message: 'Please input remark', trigger: 'blur' },
   ],
 })
@@ -252,7 +209,7 @@ const saveadd = async (formEl: FormInstance | undefined) => {
 	if (!formEl) return
 	await formEl.validate((valid, fields) => {
 		if (valid) {
-			addMeterialMessage(updateform)
+			addBugSchedule(updateform)
 		} else {
 		console.log('error submit!', fields)
 		}
@@ -311,41 +268,31 @@ const handleDelete = (index: number) => {
 // 表格编辑时弹窗和保存
 const editVisible = ref(false);
 let editform = reactive({
-	sn: '',
-	description: '',
-  produc_type: '',
-	produc_brand: '',
-	produc_model: '',
-	produc_encoding: '',
-  creat_date: '',
-	remark: '',
+	worker_id: '',
+	creat_time: '',
+  update_time: '',
+  bug_id: '',
+  produc_brand: '',
+  bug_title: '',
+  bug_info: '',
+  bug_details: '',
 });
 let idx: number = -1;
 const handleEdit = (index: number, row: any) => {
 	idx = index;
-	editform.sn = row.sn;
-	editform.description = row.description;
-	editform.produc_type = row.produc_type;
-	editform.produc_brand = row.produc_brand;
-	editform.produc_model = row.produc_model;
-	editform.produc_encoding = row.produc_encoding;
-	editform.creat_date = row.creat_date;
-	editform.remark = row.remark;
+	editform.update_time = row.update_time;
+	editform.bug_info = row.bug_info;
+	editform.bug_details = row.bug_details;
 
 	editVisible.value = true;
 };
 const saveEdit = () => {
 	editVisible.value = false;
 	ElMessage.success(`修改已提交`);
-	tableData.value[idx].sn = editform.sn;
-	tableData.value[idx].description = editform.description;
-	tableData.value[idx].produc_type = editform.produc_type;
-	tableData.value[idx].produc_brand = editform.produc_brand;
-	tableData.value[idx].produc_model = editform.produc_model;
-	tableData.value[idx].produc_encoding = editform.produc_encoding;
-	tableData.value[idx].creat_date = editform.creat_date;
-	tableData.value[idx].remark = editform.remark;
-  editMeterialMessage(tableData)
+	tableData.value[idx].update_time = editform.update_time;
+	tableData.value[idx].bug_info = editform.bug_info;
+	tableData.value[idx].bug_details = editform.bug_details;
+  editBugSchedule(tableData)
 };
 
 </script>

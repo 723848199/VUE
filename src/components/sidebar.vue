@@ -141,6 +141,12 @@ const items = [
         title: '物料管理',
         permiss: '8',
     },
+    {
+        icon: 'DocumentCopy',
+        index: 'BugSchedule',
+        title: '问题单',
+        permiss: '9',
+    },
 ];
 
 const route = useRoute();
