@@ -62,6 +62,14 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "tabs" */ '../views/MaterialManagement.vue'),
             },
             {
+                path: '/BugSchedule',
+                name: 'BugSchedule',
+                meta: {
+                    title: '问题单',
+                },
+                component: () => import(/* webpackChunkName: "tabs" */ '../views/BugSchedule.vue'),
+            },
+            {
                 path: '/permission',
                 name: 'permission',
                 meta: {
@@ -91,7 +99,6 @@ const routes: RouteRecordRaw[] = [
                 name: 'markdown',
                 meta: {
                     title: 'markdown编辑器',
-                    permiss: '9',
                 },
                 component: () => import(/* webpackChunkName: "markdown" */ '../views/markdown.vue'),
             },
