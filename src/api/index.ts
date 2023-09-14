@@ -34,7 +34,7 @@ export function editMeterialMessage(data: any){
 // 新增工单
 export function addBugSchedule(data: any){
     return request({
-        url: '/bug_create',
+        url: 'api/bug_create',
         method: 'post',
         data: data
     })
@@ -42,7 +42,7 @@ export function addBugSchedule(data: any){
 // 工单信息
 export function bugSchedule(data: any){
     return request({
-        url: '/bug_infos',
+        url: 'api/bug_infos',
         method: 'get',
         data: data
     })
