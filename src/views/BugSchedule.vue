@@ -40,19 +40,6 @@
 						<el-button text :icon="List" class="blue" @click="table = true">
 							历史
 						</el-button>
-						<el-drawer
-							append-to-body
-							v-model="table"
-							title="修改记录"
-							direction="rtl"
-							size="50%"
-						>
-							<el-table :data="gridData">
-								<el-table-column property="date" label="Date" width="150" />
-								<el-table-column property="name" label="Name" width="200" />
-								<el-table-column property="address" label="Address" />
-							</el-table>
-						</el-drawer>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -67,7 +54,20 @@
 				></el-pagination>
 			</div>
 		</div>
-
+		
+		<el-drawer
+			append-to-body
+			v-model="table"
+			title="修改记录"
+			direction="rtl"
+			size="50%"
+		>
+			<el-table :data="gridData">
+				<el-table-column property="date" label="Date" width="150" />
+				<el-table-column property="name" label="Name" width="200" />
+				<el-table-column property="address" label="Address" />
+			</el-table>
+		</el-drawer>
     <!-- 新增物料弹出框 -->
 		<el-dialog title="新增工单" v-model="updateVisible" width="30%">
 			<el-form :model="updateform" ref="ruleFormRef" label-width="100px" :rules="rules">
@@ -132,7 +132,7 @@
 import { ref, reactive } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import {Edit, Search, Plus, List} from '@element-plus/icons-vue';
-import {fetchData, addBugSchedule, editBugSchedule} from '../api';
+import {fetchData, addBugSchedule, editBugSchedule, bugSchedule} from '../api';
 import type { FormInstance, FormRules } from 'element-plus'
 // import List from "wangeditor/dist/menus/list";
 
@@ -193,7 +193,7 @@ const rules = reactive<FormRules>({
 
 // 获取表格数据
 const getData = () => {
-	fetchData().then(res => {
+	bugSchedule().then(res => {
 		tableData.value = res.data.list;
 		pageTotal.value = res.data.pageTotal || 50;
 	});

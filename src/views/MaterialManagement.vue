@@ -18,46 +18,22 @@
 
 				</el-table-column>
 				<el-table-column prop="sn" label="产品编码">
-					<template >
-						！！！代码未处理 产品描述 读取
-					</template>
 				</el-table-column>
 				<el-table-column prop="description" label="产品描述" align="center">
-					<template >
-           				 ！！！代码未处理 产品描述 读取
-          			</template>
 				</el-table-column>
 				<el-table-column prop="produc_type" label="产品类型" align="center">
-					<template >
-           				！！！代码未处理  读取
-				  </template>
 				</el-table-column>
 				<el-table-column prop="produc_brand" label="产品品牌" align="center">
-					<template >
-						！！！代码未处理  读取
-					</template>
 				</el-table-column>
 				<el-table-column prop="produc_model" label="入网产品型号" align="center">
-					<template >
-						！！！代码未处理  读取
-					</template>
 				</el-table-column>
 				<el-table-column prop="produc_encoding" label="产品代码" align="center">
-					<template >
-						！！！代码未处理  读取
-					</template>
 				</el-table-column>
 
 				<el-table-column prop="creat_date" label="创建时间">
-					<template >
-						！！！代码未处理  读取
-					</template>
 				</el-table-column>
 
 				<el-table-column prop="remark" label="备注信息">
-					<template >
-						！！！代码未处理  读取
-					</template>
 				</el-table-column>
 				<el-table-column label="操作" width="220" align="center">
 					<template #default="scope">
@@ -67,19 +43,6 @@
 						<el-button text :icon="List" class="blue" @click="table = true">
 							历史
 						</el-button>
-						<el-drawer
-							append-to-body
-							v-model="table"
-							title="修改记录"
-							direction="rtl"
-							size="50%"
-						>
-							<el-table :data="gridData">
-								<el-table-column property="date" label="Date" width="150" />
-								<el-table-column property="name" label="Name" width="200" />
-								<el-table-column property="address" label="Address" />
-							</el-table>
-						</el-drawer>
 					</template>
 				</el-table-column>
 			</el-table>
@@ -95,6 +58,19 @@
 			</div>
 		</div>
 
+		<el-drawer
+			append-to-body
+			v-model="table"
+			title="修改记录"
+			direction="rtl"
+			size="50%"
+		>
+			<el-table :data="gridData">
+				<el-table-column property="date" label="Date" width="150" />
+				<el-table-column property="name" label="Name" width="200" />
+				<el-table-column property="address" label="Address" />
+			</el-table>
+		</el-drawer>
     <!-- 新增物料弹出框 -->
 		<el-dialog title="新增产品信息" v-model="updateVisible" width="30%">
 			<el-form :model="updateform" ref="ruleFormRef" label-width="100px" :rules="rules">
