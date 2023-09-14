@@ -39,8 +39,8 @@ export function addBugSchedule(data: any){
         data: data
     })
 }
-// 工单信息
-export function bugSchedule(data: any){
+// 获取工单信息
+export const bugSchedule = (data: any) => {
     return request({
         url: 'api/bug_infos',
         method: 'get',
